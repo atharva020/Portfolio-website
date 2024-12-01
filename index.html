@@ -10,11 +10,11 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">amog<span>oe</span></div>
+            <div class="logo">Atharva <span>Chirde</span></div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#section1">Home</a></li>
+                <li><a href="#section2">Services</a></li>
+                <li><a href="#section3">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -22,27 +22,104 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>
-                    Hello, I'm<br>
-                    <span>a Front end Developer</span>
-                </h1>
-                <p>
-                    Fond of creating web application designs<br>
-                    and bring them to life using code & develop<br>
-                    mobile designs
-                </p>
-                <button class="cta-button">Creator journey</button>
+    <!-- Sections Container -->
+    <div class="sections-container">
+        <!-- Section 1 - Hero -->
+        <section id="section1" class="hero section active">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>
+                        Hello, I'm<br>
+                        <span>a Front end Developer</span>
+                    </h1>
+                    <p>
+                        Fond of creating web application designs<br>
+                        and bring them to life using code & develop<br>
+                        mobile designs
+                    </p>
+                    <button class="cta-button">Creator journey</button>
+                </div>
             </div>
-            <div class="timeline-dots">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="section2" class="section skills">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="section-title">Skill-Set</h1>
+                </div>
+                
+                <div class="skills-grid">
+                    <!-- Skill Card 1 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
+                            </svg>                        </div>
+                        <h3>Git Version Control</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+        
+                    <!-- Skill Card 2 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <img src="icons/app.svg" alt="App Design">
+                        </div>
+                        <h3>App Design</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+        
+                    <!-- Skill Card 3 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <img src="icons/backend.svg" alt="Back-end Development">
+                        </div>
+                        <h3>Back-end Development</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+        
+                    <!-- Skill Card 4 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <img src="icons/web.svg" alt="Web Development">
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+        
+                    <!-- Skill Card 5 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <img src="icons/photo.svg" alt="Photography">
+                        </div>
+                        <h3>Photography</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+        
+                    <!-- Skill Card 6 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <img src="icons/freelance.svg" alt="Freelancing">
+                        </div>
+                        <h3>Freelancing</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <!-- Section 3 -->
+        <section id="section3" class="section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>About</h1>
+                    <!-- Add your about content -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    
+
+    <script src="script.js"></script>
 </body>
 </html>
