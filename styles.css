@@ -1,0 +1,210 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ff4d5a;
+    --bg-color: #1f2235;
+    --text-color: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    padding: 2rem 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section Styles */
+.hero {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    position: relative;
+}
+
+.hero .container {
+    display: flex;
+    justify-content: center;
+
+    padding-left: 0;
+    /* Remove left padding */
+    margin-left: 700px;
+    /* Move content to the left */
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 8rem 0;
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.hero-content h1 span {
+    font-size: 4.5rem;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    opacity: 0.7;
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+}
+
+/* Timeline Dots */
+.timeline-dots {
+    position: fixed;
+    right: 15%;
+    /* Adjusted to percentage for better positioning */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 10;
+    /* Ensure dots stay above other content */
+}
+
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+.dot.active::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background-color: var(--primary-color);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px;
+}
+
+.dot:last-child.active::after {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero .container {
+        margin-left: -50px;
+        /* Adjust for smaller screens */
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+
+    .hero-content h1 span {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero .container {
+        margin-left: 0;
+        /* Reset margin for mobile */
+        padding-left: 2rem;
+    }
+
+    .hero-content {
+        padding: 4rem 0;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content h1 span {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .timeline-dots {
+        right: 2rem;
+    }
+}
