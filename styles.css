@@ -27,8 +27,19 @@ body {
 
 /* Navbar Styles */
 .navbar {
-    padding: 2rem 0;
+    position: fixed;
+    /* Make the navbar fixed */
+    top: 0;
+    /* Position it at the top */
+    width: 100%;
+    /* Ensure it spans the full width */
+    z-index: 1000;
+    /* Ensure it stays above other content */
+    padding: 1rem 0;
+    /* Adjust padding as needed */
     background-color: #1f2235;
+    /* Ensure background color is set */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .container {
