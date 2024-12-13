@@ -34,8 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     
-    if (hamburger) {  // Check if hamburger exists
-        hamburger.addEventListener('click', function() {
+    if (hamburger && navLinks) {  // Check if both elements exist
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();  // Prevent click from bubbling up
             this.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
@@ -49,11 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
             });
+        });
+
+        // Prevent menu from closing when clicking inside it
+        navLinks.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
     }
 });
