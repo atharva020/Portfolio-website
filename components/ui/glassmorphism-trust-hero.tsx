@@ -913,6 +913,7 @@ function Contact() {
     <section id="contact" className="relative py-28 px-6 lg:px-12 border-t border-white/[0.06]">
       <div className="mx-auto max-w-5xl">
 
+        {/* Header */}
         <div className="mb-16 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionEyebrow>Contact</SectionEyebrow>
@@ -925,66 +926,78 @@ function Contact() {
           </p>
         </div>
 
-        {/* Two-col: form left, socials right */}
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
-          <form onSubmit={handleSubmit} className="lg:col-span-3 space-y-6">
-            <div className="space-y-1">
-              <label className="text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
-                Your email
-              </label>
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="you@example.com"
-                className="w-full border-b border-white/10 bg-transparent py-3 text-sm text-white placeholder-zinc-600 outline-none transition-colors focus:border-white/30"
-              />
-            </div>
-            <div className="space-y-1">
-              <label className="text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
-                Message
-              </label>
-              <textarea
-                name="message"
-                required
-                rows={5}
-                placeholder="Tell me about what you're building…"
-                className="w-full resize-none border-b border-white/10 bg-transparent py-3 text-sm text-white placeholder-zinc-600 outline-none transition-colors focus:border-white/30"
-              />
-            </div>
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-5">
 
-            <button
-              type="submit"
-              disabled={status === "sending" || status === "sent"}
-              className="group inline-flex items-center gap-2 text-sm font-semibold text-white transition-opacity hover:opacity-70 disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {status === "sending" ? (
-                "Sending…"
-              ) : status === "sent" ? (
-                "Message sent!"
-              ) : (
-                <>
-                  Send message
-                  <Send className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </>
-              )}
-            </button>
+          {/* Form — left 3 cols */}
+          <form onSubmit={handleSubmit} className="lg:col-span-3">
+            {/* Bordered form area */}
+            <div className="border border-white/[0.08] rounded-2xl overflow-hidden divide-y divide-white/[0.08]">
 
-            {status === "error" && (
-              <p className="text-xs text-red-400">
-                Something went wrong. Please try again.
-              </p>
-            )}
+              {/* Email row */}
+              <div className="flex items-center gap-4 px-5 py-4 focus-within:bg-white/[0.02] transition-colors">
+                <label className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600 w-16">
+                  From
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                  className="flex-1 bg-transparent text-sm text-white placeholder-zinc-700 outline-none"
+                />
+              </div>
+
+              {/* Message row */}
+              <div className="flex items-start gap-4 px-5 py-4 focus-within:bg-white/[0.02] transition-colors">
+                <label className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600 w-16 pt-0.5">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows={6}
+                  placeholder="Tell me what you're building or just say hi…"
+                  className="flex-1 resize-none bg-transparent text-sm text-white placeholder-zinc-700 outline-none leading-relaxed"
+                />
+              </div>
+
+              {/* Action row */}
+              <div className="flex items-center justify-between px-5 py-3.5 bg-white/[0.015]">
+                <span className="text-[10px] text-zinc-700 tabular-nums">
+                  {status === "sent"
+                    ? "✓ Sent successfully"
+                    : status === "error"
+                    ? "Something went wrong — try again"
+                    : "Reply within 24 h"}
+                </span>
+                <button
+                  type="submit"
+                  disabled={status === "sending" || status === "sent"}
+                  className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-xs font-semibold text-white transition-all hover:bg-white/10 hover:border-white/25 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {status === "sending" ? (
+                    "Sending…"
+                  ) : status === "sent" ? (
+                    "Sent!"
+                  ) : (
+                    <>
+                      Send message
+                      <Send className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
           </form>
 
-          {/* Right — links */}
+          {/* Socials — right 2 cols */}
           <div className="lg:col-span-2 flex flex-col justify-between gap-10">
             <div className="space-y-4">
               {[
-                { href: "https://github.com/atharva020", label: "GitHub", sub: "github.com/atharva020", Icon: GithubIcon },
-                { href: "https://linkedin.com/in/atharva-chirde", label: "LinkedIn", sub: "atharva-chirde", Icon: LinkedinIcon },
-                { href: "https://x.com/atharva_chirde", label: "X / Twitter", sub: "@atharva_chirde", Icon: TwitterIcon },
-                { href: "https://leetcode.com/u/atharva_chirde/", label: "LeetCode", sub: "atharva_chirde", Icon: Code2 },
+                { href: "https://github.com/atharva020",            label: "GitHub",     sub: "github.com/atharva020", Icon: GithubIcon   },
+                { href: "https://linkedin.com/in/atharva-chirde",   label: "LinkedIn",   sub: "atharva-chirde",        Icon: LinkedinIcon  },
+                { href: "https://x.com/atharva_chirde",             label: "X / Twitter",sub: "@atharva_chirde",       Icon: TwitterIcon   },
+                { href: "https://leetcode.com/u/atharva_chirde/",   label: "LeetCode",   sub: "atharva_chirde",        Icon: Code2         },
               ].map(({ href, label, sub, Icon }) => (
                 <a
                   key={label}
