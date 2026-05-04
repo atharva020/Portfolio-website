@@ -152,8 +152,8 @@ function Hero() {
     >
       {/* Layered CSS background — grid + radial glow + grain */}
       <div className="absolute inset-0 z-0 hero-bg" aria-hidden>
-        <div className="absolute inset-0 hero-grid" />
         <div className="absolute inset-0 hero-glow" />
+        <div className="absolute inset-0 hero-aurora" />
         <div className="absolute inset-0 hero-grain" />
         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-zinc-950/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/60" />
@@ -564,11 +564,14 @@ function About() {
 // ── SKILLS ────────────────────────────────────────────────────────────────────
 
 function Skills() {
+  const [active, setActive] = useState(0);
+  const cur = SKILLS[active];
+  const ActiveIcon = cur.icon;
+
   return (
     <section id="skills" className="relative py-28 px-6 lg:px-12">
       <div className="mx-auto max-w-5xl">
 
-        {/* Two-col header */}
         <div className="mb-16 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionEyebrow>Skill-Set</SectionEyebrow>
@@ -581,37 +584,81 @@ function Skills() {
           </p>
         </div>
 
-        {/* Numbered list — no cards, just space and type */}
-        <div className="divide-y divide-white/[0.06]">
-          {SKILLS.map(({ icon: Icon, title, desc, tags }, i) => (
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+          {/* Left rail — selectable index */}
+          <ul className="lg:col-span-5 border-y border-white/[0.06] divide-y divide-white/[0.06]">
+            {SKILLS.map(({ icon: Icon, title }, i) => {
+              const on = i === active;
+              return (
+                <li key={title}>
+                  <button
+                    type="button"
+                    onClick={() => setActive(i)}
+                    onMouseEnter={() => setActive(i)}
+                    className={`w-full flex items-center gap-4 py-4 text-left transition-colors ${
+                      on ? "text-white" : "text-zinc-500 hover:text-zinc-300"
+                    }`}
+                  >
+                    <span
+                      className={`text-[11px] font-mono tabular-nums w-7 transition-colors ${
+                        on ? "text-amber-400" : "text-zinc-700"
+                      }`}
+                      style={{ fontFamily: "ui-monospace, 'Cascadia Code', 'Fira Code', monospace" }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <Icon className="h-4 w-4 shrink-0" />
+                    <span className="flex-1 text-sm font-medium tracking-tight">{title}</span>
+                    <ChevronRight
+                      className={`h-3.5 w-3.5 transition-all ${
+                        on ? "opacity-100 translate-x-0 text-white" : "opacity-0 -translate-x-2"
+                      }`}
+                    />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* Right pane — active skill detail */}
+          <div className="lg:col-span-7 lg:sticky lg:top-24 lg:self-start">
             <div
-              key={title}
-              className="group flex flex-col gap-3 py-7 sm:flex-row sm:items-start sm:gap-8"
+              key={active}
+              className="skill-detail relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8"
             >
-              {/* Index */}
-              <span className="shrink-0 w-7 text-[11px] font-medium text-zinc-700 pt-0.5 tabular-nums">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              <div className="pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full bg-amber-400/[0.04] blur-3xl" />
 
-              {/* Icon + title */}
-              <div className="flex items-center gap-3 sm:w-52 sm:shrink-0">
-                <Icon className="h-4 w-4 text-zinc-500 shrink-0 transition-colors group-hover:text-white" />
-                <h3 className="text-sm font-semibold text-zinc-200 transition-colors group-hover:text-white leading-snug">
-                  {title}
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] ring-1 ring-white/10">
+                    <ActiveIcon className="h-5 w-5 text-white" />
+                  </div>
+                  <span
+                    className="text-[10px] uppercase tracking-[0.2em] text-zinc-600"
+                    style={{ fontFamily: "ui-monospace, 'Cascadia Code', 'Fira Code', monospace" }}
+                  >
+                    {String(active + 1).padStart(2, "0")} / {String(SKILLS.length).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-medium tracking-tight text-white mb-3">
+                  {cur.title}
                 </h3>
-              </div>
+                <p className="text-sm leading-relaxed text-zinc-400 mb-7">{cur.desc}</p>
 
-              {/* Description */}
-              <p className="flex-1 text-sm leading-relaxed text-zinc-500">{desc}</p>
-
-              {/* Tags — right-aligned */}
-              <div className="flex flex-wrap gap-x-4 gap-y-1 sm:justify-end sm:w-48 sm:shrink-0">
-                {tags.map((t) => (
-                  <Pill key={t} label={t} />
-                ))}
+                <div className="flex flex-wrap gap-2">
+                  {cur.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="inline-flex items-center rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-zinc-300"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
@@ -621,6 +668,8 @@ function Skills() {
 // ── WORK ─────────────────────────────────────────────────────────────────────
 
 function Work() {
+  const [active, setActive] = useState(0);
+
   return (
     <section id="work" className="relative py-28 px-6 lg:px-12">
       <div className="mx-auto max-w-5xl">
@@ -644,42 +693,78 @@ function Work() {
           </a>
         </div>
 
-        {/* Project rows — no cards */}
-        <div className="divide-y divide-white/[0.06]">
-          {PROJECTS.map(({ title, desc, tags, href }, i) => (
-            <a
-              key={title}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:gap-0 transition-colors hover:bg-white/[0.02] -mx-4 px-4 rounded-lg"
-            >
-              {/* Number */}
-              <span className="shrink-0 w-10 text-[11px] font-medium text-zinc-700 tabular-nums sm:self-start sm:pt-1">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+        {/* Accordion — one row expanded at a time */}
+        <div className="border-t border-white/[0.06]">
+          {PROJECTS.map(({ title, desc, tags, href, icon: Icon }, i) => {
+            const on = i === active;
+            return (
+              <div
+                key={title}
+                onClick={() => setActive(i)}
+                onMouseEnter={() => setActive(i)}
+                className={`group relative cursor-pointer border-b border-white/[0.06] transition-all duration-300 ${
+                  on ? "py-8" : "py-5"
+                }`}
+              >
+                {/* Active accent line */}
+                <span
+                  className={`absolute left-0 top-1/2 -translate-y-1/2 h-8 w-px bg-amber-400 transition-opacity ${
+                    on ? "opacity-100" : "opacity-0"
+                  }`}
+                />
 
-              {/* Title + desc */}
-              <div className="flex-1 min-w-0 pr-0 sm:pr-8">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <h3 className="text-xl font-semibold text-zinc-200 transition-colors group-hover:text-white tracking-tight">
+                <div className="flex items-center gap-5 sm:gap-6 pl-4">
+                  <span
+                    className={`w-8 text-[11px] font-mono tabular-nums transition-colors ${
+                      on ? "text-amber-400" : "text-zinc-700"
+                    }`}
+                    style={{ fontFamily: "ui-monospace, 'Cascadia Code', 'Fira Code', monospace" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Icon
+                    className={`h-5 w-5 shrink-0 transition-colors ${
+                      on ? "text-white" : "text-zinc-600 group-hover:text-zinc-400"
+                    }`}
+                  />
+                  <h3
+                    className={`flex-1 font-medium tracking-tight transition-all duration-300 ${
+                      on
+                        ? "text-2xl sm:text-3xl text-white"
+                        : "text-base sm:text-lg text-zinc-400 group-hover:text-zinc-200"
+                    }`}
+                  >
                     {title}
                   </h3>
-                  <MoveUpRight className="h-3.5 w-3.5 text-zinc-600 opacity-0 -translate-y-0.5 translate-x-0.5 transition-all group-hover:opacity-100 group-hover:text-white" />
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className={`shrink-0 inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-all hover:text-white ${
+                      on ? "opacity-100" : "opacity-0 group-hover:opacity-60"
+                    }`}
+                  >
+                    Visit
+                    <MoveUpRight className="w-3 h-3" />
+                  </a>
                 </div>
-                <p className="text-sm leading-relaxed text-zinc-500 max-w-lg">
-                  {desc}
-                </p>
-              </div>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-x-4 gap-y-1 sm:w-44 sm:shrink-0 sm:justify-end">
-                {tags.map((t) => (
-                  <Pill key={t} label={t} />
-                ))}
+                {on && (
+                  <div className="work-detail mt-5 grid grid-cols-1 gap-5 pl-4 sm:grid-cols-3 sm:gap-8 sm:pl-[68px]">
+                    <p className="sm:col-span-2 text-sm leading-relaxed text-zinc-400 max-w-xl">
+                      {desc}
+                    </p>
+                    <div className="flex flex-wrap gap-x-4 gap-y-2 sm:justify-end content-start">
+                      {tags.map((t) => (
+                        <Pill key={t} label={t} />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </a>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -1026,14 +1111,18 @@ export default function Portfolio() {
         html { scroll-behavior: smooth; }
 
         /* ── Hero background layers ── */
-        .hero-bg { background: radial-gradient(ellipse at 70% 20%, #1a1a1f 0%, #09090b 60%); }
-        .hero-grid {
-          background-image:
-            linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
-          background-size: 56px 56px;
-          mask-image: radial-gradient(ellipse 80% 60% at 60% 40%, black 30%, transparent 80%);
-          -webkit-mask-image: radial-gradient(ellipse 80% 60% at 60% 40%, black 30%, transparent 80%);
+        .hero-bg { background: radial-gradient(ellipse at 70% 20%, #16161b 0%, #09090b 65%); }
+        @keyframes auroraDrift {
+          0%, 100% { transform: translate3d(0,0,0) scale(1); }
+          50%      { transform: translate3d(-3%, 2%, 0) scale(1.08); }
+        }
+        .hero-aurora {
+          background:
+            radial-gradient(40% 50% at 20% 30%, rgba(251, 191, 36, 0.07), transparent 70%),
+            radial-gradient(45% 45% at 85% 70%, rgba(56, 189, 248, 0.06), transparent 70%),
+            radial-gradient(35% 40% at 50% 50%, rgba(168, 85, 247, 0.05), transparent 70%);
+          animation: auroraDrift 18s ease-in-out infinite;
+          filter: blur(40px);
         }
         .hero-glow {
           background:
@@ -1042,6 +1131,13 @@ export default function Portfolio() {
             radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.05), transparent 55%);
           filter: blur(2px);
         }
+        @keyframes detailFade {
+          from { opacity: 0; transform: translateY(-4px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .skill-detail { animation: detailFade 0.3s ease-out; }
+        .work-detail  { animation: detailFade 0.35s ease-out; }
+
         .hero-grain {
           opacity: 0.06;
           mix-blend-mode: overlay;
