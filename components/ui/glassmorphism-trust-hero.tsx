@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import {
   ArrowRight,
   Download,
@@ -151,29 +150,13 @@ function Hero() {
       id="home"
       className="relative min-h-screen w-full flex items-center overflow-hidden bg-zinc-950"
     >
-      {/* Full-bleed hero image (no grid overlay) */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero-bg.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        {/* Readability: vignette + left emphasis for copy */}
-        <div
-          className="absolute inset-0 bg-zinc-950/55"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/75 to-zinc-950/20"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/40"
-          aria-hidden
-        />
+      {/* Layered CSS background — grid + radial glow + grain */}
+      <div className="absolute inset-0 z-0 hero-bg" aria-hidden>
+        <div className="absolute inset-0 hero-grid" />
+        <div className="absolute inset-0 hero-glow" />
+        <div className="absolute inset-0 hero-grain" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-zinc-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/60" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 py-32 lg:px-12">
@@ -198,7 +181,7 @@ function Hero() {
               style={{ animationFillMode: "both" }}
             >
               Hello, I&apos;m{" "}
-              <span className="bg-gradient-to-br from-white via-white to-amber-200/90 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-white via-zinc-200 to-amber-300/80 bg-clip-text text-transparent">
                 Atharva Chirde
               </span>
               <br />
@@ -286,39 +269,32 @@ function Hero() {
               <div className="pointer-events-none absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
 
               <div className="relative z-10 space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/20">
-                    <Brain className="h-6 w-6 text-white" />
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
+                      <Brain className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.18em] text-zinc-500">Currently</div>
+                      <div className="text-sm font-medium text-white">Building things end-to-end</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold tracking-tight text-white">4+</div>
-                    <div className="text-sm text-zinc-400">Projects delivered</div>
-                  </div>
+                  <span className="text-[10px] font-mono text-zinc-600">v26.05</span>
                 </div>
 
-                <div className="space-y-3">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-zinc-400">Build quality focus</span>
-                    <span className="text-white font-medium">98%</span>
-                  </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-800/50">
-                    <div className="h-full w-[98%] rounded-full bg-gradient-to-r from-white to-zinc-400" />
-                  </div>
-                </div>
+                <div className="h-px w-full bg-white/[0.08]" />
 
-                <div className="h-px w-full bg-white/10" />
-
-                <div className="flex divide-x divide-white/10 text-center">
+                <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-xl overflow-hidden">
                   {[
-                    { val: "MERN", lbl: "Stack" },
-                    { val: "AI", lbl: "ML & NLP" },
-                    { val: "Next.js", lbl: "Apps" },
+                    { val: "4+",    lbl: "Shipped" },
+                    { val: "MERN",  lbl: "Stack" },
+                    { val: "AI/ML", lbl: "Focus" },
                   ].map(({ val, lbl }) => (
                     <div
                       key={lbl}
-                      className="min-w-0 flex-1 px-2 sm:px-3 flex flex-col items-center justify-center space-y-0.5"
+                      className="bg-zinc-950/40 px-3 py-3 flex flex-col items-center justify-center gap-0.5"
                     >
-                      <span className="text-lg font-bold text-white sm:text-xl">{val}</span>
+                      <span className="text-base font-semibold text-white tracking-tight sm:text-lg">{val}</span>
                       <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-medium">{lbl}</span>
                     </div>
                   ))}
@@ -397,7 +373,7 @@ function Objective() {
   return (
     <section
       id="objective"
-      className="relative py-24 px-6 lg:px-12 border-t border-white/[0.05] overflow-hidden"
+      className="relative py-24 px-6 lg:px-12 border-t border-white/[0.06] overflow-hidden"
     >
       {/* Vertical rule accent — left edge */}
       <div
@@ -523,7 +499,7 @@ const TYPE_COLOR: Record<string, string> = {
 
 function About() {
   return (
-    <section id="about" className="relative py-24 px-6 lg:px-12 border-t border-white/[0.05]">
+    <section id="about" className="relative py-24 px-6 lg:px-12 border-t border-white/[0.06]">
       <div className="mx-auto max-w-5xl">
 
         {/* Two-col header */}
@@ -741,7 +717,7 @@ function GitGraph() {
   }, []);
 
   return (
-    <section className="relative py-16 px-6 lg:px-12 border-t border-white/[0.05]">
+    <section className="relative py-16 px-6 lg:px-12 border-t border-white/[0.06]">
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -962,7 +938,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:px-12 backdrop-blur-xl bg-zinc-950/70 border-b border-white/6">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:px-12 backdrop-blur-xl bg-zinc-950/70 border-b border-white/[0.06]">
       <span className="text-sm font-semibold tracking-tight text-white">
         Atharva Chirde
       </span>
@@ -973,7 +949,7 @@ function Navbar() {
           <li key={link}>
             <a
               href={`#${link.toLowerCase()}`}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium uppercase tracking-wider text-zinc-400 transition-colors hover:text-white hover:bg-white/8"
+              className="px-3 py-1.5 rounded-lg text-xs font-medium uppercase tracking-wider text-zinc-400 transition-colors hover:text-white hover:bg-white/[0.06]"
             >
               {link}
             </a>
@@ -1003,7 +979,7 @@ function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="absolute top-full left-0 right-0 border-b border-white/8 bg-zinc-950/95 backdrop-blur-xl px-6 py-4 flex flex-col gap-2 sm:hidden">
+        <div className="absolute top-full left-0 right-0 border-b border-white/[0.06] bg-zinc-950/95 backdrop-blur-xl px-6 py-4 flex flex-col gap-2 sm:hidden">
           {NAV_LINKS.map((link) => (
             <a
               key={link}
@@ -1048,6 +1024,29 @@ export default function Portfolio() {
         .delay-500 { animation-delay: 0.5s; }
 
         html { scroll-behavior: smooth; }
+
+        /* ── Hero background layers ── */
+        .hero-bg { background: radial-gradient(ellipse at 70% 20%, #1a1a1f 0%, #09090b 60%); }
+        .hero-grid {
+          background-image:
+            linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+          background-size: 56px 56px;
+          mask-image: radial-gradient(ellipse 80% 60% at 60% 40%, black 30%, transparent 80%);
+          -webkit-mask-image: radial-gradient(ellipse 80% 60% at 60% 40%, black 30%, transparent 80%);
+        }
+        .hero-glow {
+          background:
+            radial-gradient(circle at 78% 28%, rgba(251, 191, 36, 0.10), transparent 45%),
+            radial-gradient(circle at 18% 82%, rgba(56, 189, 248, 0.07), transparent 50%),
+            radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.05), transparent 55%);
+          filter: blur(2px);
+        }
+        .hero-grain {
+          opacity: 0.06;
+          mix-blend-mode: overlay;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
 
         input:-webkit-autofill,
         textarea:-webkit-autofill {
@@ -1128,9 +1127,9 @@ export default function Portfolio() {
       <Navbar />
       <Hero />
       <Objective />
+      <About />
       <Skills />
       <Work />
-      <About />
       <GitGraph />
       <Contact />
     </div>
