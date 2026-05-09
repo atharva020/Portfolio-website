@@ -15,12 +15,10 @@ import {
   Layers,
   Star,
   Play,
-  Hexagon,
-  Triangle,
-  Command,
-  Ghost,
-  Gem,
   MoveUpRight,
+  Briefcase,
+  MapPin,
+  ExternalLink,
 } from "lucide-react";
 
 const GithubIcon = ({ className }: { className?: string }) => (
@@ -43,7 +41,7 @@ const TwitterIcon = ({ className }: { className?: string }) => (
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
 
-const NAV_LINKS = ["Home", "Skills", "Work", "Contact"];
+const NAV_LINKS = ["Home", "Experience", "Skills", "Work", "Contact"];
 
 const SKILLS = [
   {
@@ -79,22 +77,32 @@ const SKILLS = [
   {
     icon: Users,
     title: "Project Management",
-    desc: "Cross-functional team coordination. Co-Executive Producer for TEDxMGMU, overseeing multiple teams end-to-end.",
-    tags: ["Leadership", "TEDx", "Agile"],
+    desc: "Cross-functional team coordination, feature planning, and repository management in a fast-moving product-focused engineering team.",
+    tags: ["Leadership", "Agile", "Collaboration"],
   },
 ];
 
-/** Infinite marquee row — tech / stack labels (icon + name) */
-const HERO_TICKER = [
-  { name: "React", icon: Hexagon },
-  { name: "Next.js", icon: Triangle },
-  { name: "Node.js", icon: Command },
-  { name: "MongoDB", icon: Gem },
-  { name: "TypeScript", icon: Cpu },
-  { name: "Python", icon: Ghost },
-] as const;
+/** Infinite marquee — logos in /public/brands/ (single-color #fff for dark UI) */
+const HERO_TICKER: { name: string; logoSrc: string }[] = [
+  { name: "Next.js", logoSrc: "/brands/next.js.svg" },
+  { name: "TypeScript", logoSrc: "/brands/typescript.svg" },
+  { name: "Python", logoSrc: "/brands/Python.svg" },
+  { name: "Cypress", logoSrc: "/brands/Cypress.svg" },
+  { name: "Playwright", logoSrc: "/brands/Playwright.svg" },
+  { name: "Claude", logoSrc: "/brands/claude.svg" },
+  { name: "Cursor", logoSrc: "/brands/cursor.svg" },
+  { name: "iOS", logoSrc: "/brands/ios.svg" },
+  { name: "Angular", logoSrc: "/brands/angular.svg" },
+];
 
 const PROJECTS = [
+  {
+    title: "RepoFAQ",
+    desc: "Paste any public GitHub repo URL and get instant AI-generated FAQs backed by real code references. Saves hours of manual documentation work.",
+    tags: ["AI", "Next.js", "TypeScript", "GitHub API"],
+    href: "https://repo-faq.atharvachirde.com/",
+    icon: Brain,
+  },
   {
     title: "CodeIt",
     desc: "Web-based platform for developers to write and compile code in multiple languages with real-time collaboration.",
@@ -107,14 +115,7 @@ const PROJECTS = [
     desc: "AI-powered tool that processes call recordings to analyze sentiment, emotion, transcription, and speaker interactions.",
     tags: ["AI/ML", "NLP", "Python"],
     href: "https://conversation-analysis.onrender.com",
-    icon: Brain,
-  },
-  {
-    title: "E-Com WebApp",
-    desc: "Feature-rich shopping system with secure payment integration, user authentication, cart management, and order tracking.",
-    tags: ["React", "Node.js", "MongoDB"],
-    href: "https://github.com/atharva020/E-Com-ReactApp.git",
-    icon: Globe,
+    icon: Cpu,
   },
   {
     title: "Zomato Clone",
@@ -122,6 +123,34 @@ const PROJECTS = [
     tags: ["React", "Styled-Components", "REST API"],
     href: "https://zomato-ui-clone.onrender.com",
     icon: Layers,
+  },
+];
+
+const EXPERIENCE = [
+  {
+    company: "Shastack / CodingChai",
+    role: "Full Stack Software Engineer",
+    type: "Full-time",
+    period: "2025 — Present",
+    location: "Remote",
+    companyUrls: [
+      { label: "shastack.com", href: "https://www.shastack.com/" },
+      { label: "codingchai.com", href: "https://www.codingchai.com/" },
+    ],
+    highlights: [
+      "Developing and maintaining internal tooling and real-world interview-style applications.",
+      "Building frontend applications using React, Next.js, Angular, and React Native.",
+      "Working on backend development and APIs using Node.js and Laravel.",
+      "Creating and reviewing custom coding assessment questions delivered to enterprise-level clients.",
+      "Collaborating with a small product-focused engineering team to manage repos, features, and architecture.",
+    ],
+    achievements: [
+      "Delivered custom industry-standard coding assessments to clients including Amazon, Capgemini, and Dell Technologies.",
+      "Worked across React, Angular, and React Native ecosystems on production web and mobile apps.",
+      "Helped design feature-based coding challenges inspired by real apps like Airbnb, Swiggy, and Zomato.",
+    ],
+    tags: ["React", "Next.js", "Angular", "React Native", "Node.js", "Laravel", "TypeScript", "MongoDB", "REST APIs", "Jest"],
+    note: "Previously joined as an intern before transitioning to full-time.",
   },
 ];
 
@@ -164,20 +193,8 @@ function Hero() {
 
           {/* LEFT */}
           <div className="lg:col-span-7 space-y-8">
-            <div
-              className="animate-fade-in delay-100"
-              style={{ animationFillMode: "both" }}
-            >
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-md">
-                <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-2">
-                  Full Stack Portfolio
-                  <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                </span>
-              </div>
-            </div>
-
             <h1
-              className="animate-fade-in delay-200 text-5xl sm:text-6xl lg:text-7xl xl:text-[82px] font-medium tracking-tighter leading-[0.92]"
+              className="animate-fade-in delay-100 text-5xl sm:text-6xl lg:text-7xl xl:text-[82px] font-medium tracking-tighter leading-[0.92]"
               style={{ animationFillMode: "both" }}
             >
               Hello, I&apos;m{" "}
@@ -189,16 +206,14 @@ function Hero() {
             </h1>
 
             <p
-              className="animate-fade-in delay-300 max-w-lg text-lg text-zinc-300 leading-relaxed"
+              className="animate-fade-in delay-200 max-w-lg text-lg text-zinc-300 leading-relaxed"
               style={{ animationFillMode: "both" }}
             >
-              Fond of creating web application designs and bringing them to life
-              with code — scalable apps, secure auth, and AI-powered tools when
-              it fits.
+              Full Stack Engineer at Shastack — delivering custom coding assessments and building real-world web and mobile apps for enterprise clients.
             </p>
 
             <div
-              className="animate-fade-in delay-400 flex flex-col sm:flex-row gap-4"
+              className="animate-fade-in delay-300 flex flex-col sm:flex-row gap-4"
               style={{ animationFillMode: "both" }}
             >
               <a
@@ -221,7 +236,7 @@ function Hero() {
 
             {/* Social links */}
             <div
-              className="animate-fade-in delay-500 flex flex-wrap items-center gap-5"
+              className="animate-fade-in delay-400 flex flex-wrap items-center gap-5"
               style={{ animationFillMode: "both" }}
             >
               <span className="text-xs text-zinc-500 uppercase tracking-widest">
@@ -261,7 +276,7 @@ function Hero() {
 
           {/* RIGHT — glassmorphism stats card + marquee ticker card */}
           <div
-            className="animate-fade-in delay-500 lg:col-span-5 space-y-6"
+            className="animate-fade-in delay-400 lg:col-span-5 space-y-6"
             style={{ animationFillMode: "both" }}
           >
             {/* Stats card */}
@@ -284,18 +299,15 @@ function Hero() {
 
                 <div className="h-px w-full bg-white/[0.08]" />
 
-                <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-xl overflow-hidden">
+                <div className="space-y-2">
                   {[
-                    { val: "4+",    lbl: "Shipped" },
-                    { val: "MERN",  lbl: "Stack" },
-                    { val: "AI/ML", lbl: "Focus" },
-                  ].map(({ val, lbl }) => (
-                    <div
-                      key={lbl}
-                      className="bg-zinc-950/40 px-3 py-3 flex flex-col items-center justify-center gap-0.5"
-                    >
-                      <span className="text-base font-semibold text-white tracking-tight sm:text-lg">{val}</span>
-                      <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-medium">{lbl}</span>
+                    { label: "Full Stack", detail: "React · Next.js · Node.js · Laravel" },
+                    { label: "Mobile",     detail: "React Native · iOS (Swift)"           },
+                    { label: "AI & Tools", detail: "LLMs · Langchain · AI Agents"         },
+                  ].map(({ label, detail }) => (
+                    <div key={label} className="flex items-center justify-between rounded-lg bg-white/[0.03] px-3.5 py-2.5 border border-white/[0.05]">
+                      <span className="text-[11px] font-semibold uppercase tracking-widest text-zinc-400">{label}</span>
+                      <span className="text-[11px] text-zinc-600" style={{ fontFamily: "ui-monospace, 'Cascadia Code', monospace" }}>{detail}</span>
                     </div>
                   ))}
                 </div>
@@ -329,20 +341,24 @@ function Hero() {
                 }}
               >
                 <div className="animate-marquee flex gap-12 whitespace-nowrap px-4">
-                  {tickerTrack.map((item, i) => {
-                    const Icon = item.icon;
-                    return (
-                      <div
-                        key={`${item.name}-${i}`}
-                        className="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"
-                      >
-                        <Icon className="h-6 w-6 text-white shrink-0" />
-                        <span className="text-lg font-bold text-white tracking-tight">
-                          {item.name}
-                        </span>
-                      </div>
-                    );
-                  })}
+                  {tickerTrack.map((item, i) => (
+                    <div
+                      key={`${item.name}-${i}`}
+                      className="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"
+                    >
+                      <img
+                        src={item.logoSrc}
+                        alt=""
+                        aria-hidden
+                        width={24}
+                        height={24}
+                        className="h-6 w-6 shrink-0 opacity-[0.9]"
+                      />
+                      <span className="text-lg font-bold text-white tracking-tight">
+                        {item.name}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -362,11 +378,11 @@ const EXPERTISE_TAGS = [
 ];
 
 const SPEC_ROWS = [
-  { key: "role",      val: "Full Stack Developer"                },
-  { key: "seeking",   val: "SWE roles / freelance collab"        },
-  { key: "building",  val: "products with real users"            },
-  { key: "learning",  val: "distributed systems, LLM fine-tuning"},
-  { key: "available", val: "true"                                },
+  { key: "role",      val: "Full Stack Software Engineer"          },
+  { key: "company",   val: "Shastack / CodingChai"                 },
+  { key: "building",  val: "assessment platforms & real-world apps"},
+  { key: "learning",  val: "distributed systems, LLM fine-tuning"  },
+  { key: "available", val: "true"                                   },
 ];
 
 function Objective() {
@@ -402,10 +418,14 @@ function Objective() {
 
             <div className="space-y-3 text-[15px] leading-relaxed text-zinc-400 max-w-lg">
               <p>
-                Started with curiosity, stayed for the craft. I&apos;m a full-stack developer who cares equally about clean APIs and crisp UIs. I&apos;ve shipped production apps in the MERN stack, wired up AI pipelines with TensorFlow and Langchain, and co-produced TEDxMGMU — which taught me that shipping software and running live events aren&apos;t that different.
+                Started with curiosity, stayed for the craft. I&apos;m a full-stack engineer who cares equally about clean APIs and crisp UIs. I&apos;ve shipped production apps across the MERN stack, wired up AI pipelines, and built tools that developers actually use. I&apos;m also very comfortable working with AI tools and agents — integrating LLMs, building Langchain pipelines, and using AI to move faster day-to-day.
               </p>
               <p>
-                Currently looking for a role or collaboration where I can own features end-to-end, work on real problems, and keep learning fast.
+                Currently working full-time at{" "}
+                <a href="https://www.shastack.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-300 transition-colors">
+                  Shastack
+                </a>
+                {" "}— delivering custom coding assessments and building real-world applications for enterprise clients like Amazon, Capgemini, and Dell Technologies.
               </p>
             </div>
 
@@ -469,7 +489,7 @@ function Objective() {
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
               </span>
               <span className="text-[11px] text-zinc-500 uppercase tracking-widest">
-                Open to opportunities
+                Employed · Open to freelance
               </span>
             </div>
           </div>
@@ -482,11 +502,10 @@ function Objective() {
 // ── ABOUT / COMMIT-LOG ───────────────────────────────────────────────────────
 
 const COMMITS = [
-  { hash: "a3f92c1", type: "feat",     msg: "launch TEDxMGMU production pipeline — co-exec 6 teams" },
-  { hash: "7d8e441", type: "feat",     msg: "ship Conversation Analysis — AI sentiment + speaker diarisation" },
-  { hash: "2bc154f", type: "feat",     msg: "deploy CodeIt — multi-lang compile + real-time collab" },
-  { hash: "f019ab3", type: "feat",     msg: "release E-Com WebApp — auth, cart, Stripe integration" },
+  { hash: "e1c7b3a", type: "feat",     msg: "join Shastack full-time — deliver custom assessments for Amazon, Capgemini, Dell" },
+  { hash: "b2d83f5", type: "feat",     msg: "ship personal projects — RepoFAQ, CodeIt, Conversation Analysis, Zomato Clone" },
   { hash: "c82d77e", type: "refactor", msg: "migrate stack → MERN + Next.js, add TensorFlow pipelines" },
+  { hash: "d4f1e09", type: "feat",     msg: "freelance — web & mobile projects for independent clients" },
   { hash: "0e6a912", type: "init",     msg: "init: B.E. Computer Engineering @ MGM University" },
 ];
 
@@ -556,6 +575,148 @@ function About() {
         </div>
 
 
+      </div>
+    </section>
+  );
+}
+
+// ── EXPERIENCE ────────────────────────────────────────────────────────────────
+
+function Experience() {
+  const exp = EXPERIENCE[0];
+
+  return (
+    <section id="experience" className="relative py-28 px-6 lg:px-12 border-t border-white/[0.06]">
+      <div className="mx-auto max-w-5xl">
+
+        <div className="mb-16 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <SectionEyebrow>Experience</SectionEyebrow>
+            <h2 className="text-4xl sm:text-5xl font-medium tracking-tighter text-white leading-[1]">
+              Where I&apos;ve worked
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm text-zinc-500 sm:text-right">
+            Building real products for real clients.
+          </p>
+        </div>
+
+        {/* Single experience card */}
+        <div className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden">
+          {/* Ambient glow */}
+          <div className="pointer-events-none absolute -top-32 -right-32 h-64 w-64 rounded-full bg-amber-400/[0.04] blur-3xl" aria-hidden />
+          <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-sky-400/[0.04] blur-3xl" aria-hidden />
+
+          <div className="relative z-10 p-8 sm:p-10">
+
+            {/* Header row */}
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between mb-8">
+              <div className="flex items-start gap-4">
+                <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] ring-1 ring-white/10">
+                  <Briefcase className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold tracking-tight text-white leading-snug">
+                    {exp.role}
+                  </h3>
+                  <div className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1">
+                    <a
+                      href="https://www.shastack.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors"
+                    >
+                      Shastack
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                    <span className="text-zinc-600 text-sm">/</span>
+                    <a
+                      href="https://www.codingchai.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors"
+                    >
+                      CodingChai
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Meta badges */}
+              <div className="flex flex-wrap gap-2 sm:flex-col sm:items-end sm:gap-1.5">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-medium text-emerald-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  {exp.period}
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] text-zinc-400">
+                  <MapPin className="w-3 h-3" />
+                  {exp.location}
+                </span>
+                <span className="inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] text-zinc-400">
+                  {exp.type}
+                </span>
+              </div>
+            </div>
+
+            {/* Two-col body */}
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+
+              {/* Responsibilities */}
+              <div>
+                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600">
+                  Responsibilities
+                </p>
+                <ul className="space-y-2.5">
+                  {exp.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-zinc-400">
+                      <ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500/60" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Achievements */}
+              <div>
+                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600">
+                  Notable Achievements
+                </p>
+                <ul className="space-y-2.5">
+                  {exp.achievements.map((a) => (
+                    <li key={a} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-zinc-400">
+                      <Star className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-400/70 fill-amber-400/40" />
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Intern note */}
+                {exp.note && (
+                  <p
+                    className="mt-6 text-[11px] italic text-zinc-600 border-l border-white/[0.08] pl-3"
+                    style={{ fontFamily: "ui-monospace, 'Cascadia Code', 'Fira Code', monospace" }}
+                  >
+                    // {exp.note}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Tech tags */}
+            <div className="mt-8 pt-6 border-t border-white/[0.05] flex flex-wrap gap-2">
+              {exp.tags.map((t) => (
+                <span
+                  key={t}
+                  className="inline-flex items-center rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-zinc-300"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -775,22 +936,14 @@ function Work() {
 
 function GitGraph() {
   const [svgMarkup, setSvgMarkup] = useState<string | null>(null);
-  const [contribTotal, setContribTotal] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        const [chartRes, statsRes] = await Promise.all([
-          fetch("/api/github-chart"),
-          fetch("/api/github-contributions"),
-        ]);
+        const chartRes = await fetch("/api/github-chart");
         if (!cancelled && chartRes.ok) {
           setSvgMarkup(await chartRes.text());
-        }
-        if (!cancelled && statsRes.ok) {
-          const j = (await statsRes.json()) as { totalAllTime: number | null };
-          if (typeof j.totalAllTime === "number") setContribTotal(j.totalAllTime);
         }
       } catch {
         /* ignore */
@@ -812,20 +965,15 @@ function GitGraph() {
             </h2>
           </div>
 
-          <div className="flex flex-col items-start gap-3 sm:items-end">
-            {contribTotal !== null && (
-              <div className="text-right">
-                <div className="text-[10px] uppercase tracking-[0.14em] text-zinc-600">
-                  Total contributions
-                </div>
-                <div className="text-3xl font-semibold tabular-nums text-white tracking-tight">
-                  {contribTotal.toLocaleString()}
-                </div>
-                <div className="text-[11px] text-zinc-600 mt-0.5 max-w-[220px] sm:text-right">
-                  All-time on public graph (same metric as heatmap)
-                </div>
-              </div>
-            )}
+          <div className="flex flex-col items-start gap-2 sm:items-end">
+            <p className="max-w-[260px] text-[13px] leading-snug text-zinc-400 sm:text-right">
+              Committing{' '}
+              <span className="bg-gradient-to-r from-sky-300 via-violet-300 to-fuchsia-300 bg-clip-text font-medium text-transparent">
+                day &amp; night
+              </span>
+              {' '}— small commits, steady momentum.{' '}
+              <span className="text-zinc-600 italic">Each brighter cell is another day of shipping.</span>
+            </p>
             <a
               href="https://github.com/atharva020"
               target="_blank"
@@ -1188,7 +1336,6 @@ export default function Portfolio() {
         .commit-row:nth-child(3)  { animation-delay: 0.5s; }
         .commit-row:nth-child(4)  { animation-delay: 0.7s; }
         .commit-row:nth-child(5)  { animation-delay: 0.9s; }
-        .commit-row:nth-child(6)  { animation-delay: 1.1s; }
 
         /* ── Objective section ── */
         @keyframes lineIn {
@@ -1237,6 +1384,7 @@ export default function Portfolio() {
       <Hero />
       <Objective />
       <About />
+      <Experience />
       <Skills />
       <Work />
       <GitGraph />
