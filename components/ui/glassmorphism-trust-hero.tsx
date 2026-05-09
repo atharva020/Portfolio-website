@@ -5,7 +5,6 @@ import {
   Download,
   Code2,
   Cpu,
-  Globe,
   GitBranch,
   Brain,
   Users,
@@ -19,6 +18,7 @@ import {
   Briefcase,
   MapPin,
   ExternalLink,
+  Sparkles,
 } from "lucide-react";
 
 const GithubIcon = ({ className }: { className?: string }) => (
@@ -45,6 +45,18 @@ const NAV_LINKS = ["Home", "Experience", "Skills", "Work", "Contact"];
 
 const SKILLS = [
   {
+    icon: Sparkles,
+    title: "AI-assisted engineering",
+    desc: "I don't vibe-code and hope—Cursor rules & Skills, Claude Code for deep refactors and greenfield loops, MCP to plug models into real tools (files, APIs, repos), Ollama when inference should stay local. Models speed me up; I still own architecture, review diffs line-by-line, and ship.",
+    tags: ["Cursor", "Skills", "MCP", "Claude Code", "Ollama"],
+  },
+  {
+    icon: Layers,
+    title: "Frameworks, web & AI in products",
+    desc: "React, Next.js, Node.js, Express, and MongoDB—the stack you deploy and maintain. MERN, auth, REST, SSR on top. TensorFlow and NLP where models matter; Langchain and LLMs wired into real APIs users hit, not notebook demos.",
+    tags: ["React", "Next.js", "Node.js", "MongoDB", "Langchain", "LLMs", "TensorFlow", "MERN"],
+  },
+  {
     icon: GitBranch,
     title: "Git Version Control",
     desc: "Daily driver for branching, PRs, and keeping team repos clean. Comfortable with rebases, cherry-picks, and CI workflows.",
@@ -55,24 +67,6 @@ const SKILLS = [
     title: "Programming & Scripting",
     desc: "Python, Java, JavaScript, TypeScript — I pick what fits the problem, not the other way around.",
     tags: ["Python", "Java", "TypeScript", "JavaScript"],
-  },
-  {
-    icon: Layers,
-    title: "Tools & Frameworks",
-    desc: "TensorFlow and Langchain for AI/ML. React, Next.js, Node.js, Express, and MongoDB for the web layer.",
-    tags: ["React", "Next.js", "Node.js", "MongoDB"],
-  },
-  {
-    icon: Globe,
-    title: "Web Development",
-    desc: "MERN stack and Next.js — auth flows, REST APIs, SSR, the usual full-stack loop.",
-    tags: ["MERN", "Next.js", "REST APIs"],
-  },
-  {
-    icon: Brain,
-    title: "AI & Machine Learning",
-    desc: "Trained models with TensorFlow, built NLP pipelines, and wired LLMs into production apps via Langchain.",
-    tags: ["TensorFlow", "NLP", "LLMs", "Langchain"],
   },
   {
     icon: Users,
@@ -211,6 +205,12 @@ function Hero() {
             >
               Full Stack Engineer at Shastack — delivering custom coding assessments and building real-world web and mobile apps for enterprise clients.
             </p>
+            <p
+              className="animate-fade-in delay-200 max-w-xl text-[15px] text-zinc-500 leading-relaxed border-l border-white/10 pl-4"
+              style={{ animationFillMode: "both" }}
+            >
+              Day-to-day: Cursor, Claude Code, MCP tooling, local Ollama when it matters—AI in the loop, not on autopilot.
+            </p>
 
             <div
               className="animate-fade-in delay-300 flex flex-col sm:flex-row gap-4"
@@ -303,7 +303,7 @@ function Hero() {
                   {[
                     { label: "Full Stack", detail: "React · Next.js · Node.js · Laravel" },
                     { label: "Mobile",     detail: "React Native · iOS (Swift)"           },
-                    { label: "AI & Tools", detail: "LLMs · Langchain · AI Agents"         },
+                    { label: "AI & Tools", detail: "Cursor · Claude Code · MCP · Ollama" },
                   ].map(({ label, detail }) => (
                     <div key={label} className="flex items-center justify-between rounded-lg bg-white/[0.03] px-3.5 py-2.5 border border-white/[0.05]">
                       <span className="text-[11px] font-semibold uppercase tracking-widest text-zinc-400">{label}</span>
@@ -372,9 +372,10 @@ function Hero() {
 // ── OBJECTIVE ─────────────────────────────────────────────────────────────────
 
 const EXPERTISE_TAGS = [
+  "Cursor", "Claude Code", "MCP", "Ollama",
   "React", "Next.js", "Node.js", "TypeScript",
-  "MongoDB", "Python", "TensorFlow", "Langchain",
-  "REST APIs", "Auth", "Git", "Agile",
+  "MongoDB", "Python", "Langchain", "TensorFlow",
+  "REST APIs", "Git", "Agile",
 ];
 
 const SPEC_ROWS = [
@@ -418,14 +419,21 @@ function Objective() {
 
             <div className="space-y-3 text-[15px] leading-relaxed text-zinc-400 max-w-lg">
               <p>
-                Started with curiosity, stayed for the craft. I&apos;m a full-stack engineer who cares equally about clean APIs and crisp UIs. I&apos;ve shipped production apps across the MERN stack, wired up AI pipelines, and built tools that developers actually use. I&apos;m also very comfortable working with AI tools and agents — integrating LLMs, building Langchain pipelines, and using AI to move faster day-to-day.
+                Started with curiosity, stayed for the craft. Full-stack engineer: clean APIs, crisp UIs, MERN production apps, and AI in the product—Langchain, LLMs, pipelines—plus tools people actually use day-to-day.
               </p>
               <p>
-                Currently working full-time at{" "}
+                In practice:{" "}
+                <span className="text-zinc-300">
+                  Cursor (rules &amp; Skills), Claude Code, MCP, Ollama
+                </span>
+                {" "}when it should stay local. I use AI hard to move faster and build stronger apps—not to ship blind output—then I read every diff before it goes out.
+              </p>
+              <p>
+                Full-time at{" "}
                 <a href="https://www.shastack.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-300 transition-colors">
                   Shastack
                 </a>
-                {" "}— delivering custom coding assessments and building real-world applications for enterprise clients like Amazon, Capgemini, and Dell Technologies.
+                : custom coding assessments and apps for clients including Amazon, Capgemini, and Dell Technologies.
               </p>
             </div>
 
@@ -741,7 +749,7 @@ function Skills() {
             </h2>
           </div>
           <p className="max-w-xs text-sm text-zinc-500 sm:text-right">
-            Full-stack, AI/ML, and cross-functional leadership — the whole stack.
+            Agentic tooling first, then stacks and shipping—Cursor, MCP, production AI, the usual web/mobile depth.
           </p>
         </div>
 
@@ -862,21 +870,20 @@ function Work() {
               <div
                 key={title}
                 onClick={() => setActive(i)}
-                onMouseEnter={() => setActive(i)}
-                className={`group relative cursor-pointer border-b border-white/[0.06] transition-all duration-300 ${
+                className={`group relative cursor-pointer border-b border-white/[0.06] ${
                   on ? "py-8" : "py-5"
                 }`}
               >
                 {/* Active accent line */}
                 <span
-                  className={`absolute left-0 top-1/2 -translate-y-1/2 h-8 w-px bg-amber-400 transition-opacity ${
+                  className={`absolute left-0 top-1/2 -translate-y-1/2 h-8 w-px bg-amber-400 ${
                     on ? "opacity-100" : "opacity-0"
                   }`}
                 />
 
                 <div className="flex items-center gap-5 sm:gap-6 pl-4">
                   <span
-                    className={`w-8 text-[11px] font-mono tabular-nums transition-colors ${
+                    className={`w-8 text-[11px] font-mono tabular-nums ${
                       on ? "text-amber-400" : "text-zinc-700"
                     }`}
                     style={{ fontFamily: "ui-monospace, 'Cascadia Code', 'Fira Code', monospace" }}
@@ -884,15 +891,15 @@ function Work() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <Icon
-                    className={`h-5 w-5 shrink-0 transition-colors ${
-                      on ? "text-white" : "text-zinc-600 group-hover:text-zinc-400"
+                    className={`h-5 w-5 shrink-0 ${
+                      on ? "text-white" : "text-zinc-600"
                     }`}
                   />
                   <h3
-                    className={`flex-1 font-medium tracking-tight transition-all duration-300 ${
+                    className={`flex-1 font-medium tracking-tight ${
                       on
                         ? "text-2xl sm:text-3xl text-white"
-                        : "text-base sm:text-lg text-zinc-400 group-hover:text-zinc-200"
+                        : "text-base sm:text-lg text-zinc-400"
                     }`}
                   >
                     {title}
@@ -902,8 +909,8 @@ function Work() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className={`shrink-0 inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-all hover:text-white ${
-                      on ? "opacity-100" : "opacity-0 group-hover:opacity-60"
+                    className={`shrink-0 inline-flex items-center gap-1.5 text-xs hover:text-white ${
+                      on ? "text-white" : "text-zinc-600"
                     }`}
                   >
                     Visit
@@ -912,7 +919,7 @@ function Work() {
                 </div>
 
                 {on && (
-                  <div className="work-detail mt-5 grid grid-cols-1 gap-5 pl-4 sm:grid-cols-3 sm:gap-8 sm:pl-[68px]">
+                  <div className="mt-5 grid grid-cols-1 gap-5 pl-4 sm:grid-cols-3 sm:gap-8 sm:pl-[68px]">
                     <p className="sm:col-span-2 text-sm leading-relaxed text-zinc-400 max-w-xl">
                       {desc}
                     </p>
@@ -1185,9 +1192,13 @@ function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:px-12 backdrop-blur-xl bg-zinc-950/70 border-b border-white/[0.06]">
-      <span className="text-sm font-semibold tracking-tight text-white">
+      <a
+        href="#home"
+        onClick={() => setOpen(false)}
+        className="text-sm font-semibold tracking-tight text-white hover:text-zinc-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/30 rounded-sm"
+      >
         Atharva Chirde
-      </span>
+      </a>
 
       {/* Desktop nav */}
       <ul className="hidden sm:flex items-center gap-1">
@@ -1297,7 +1308,6 @@ export default function Portfolio() {
           to   { opacity: 1; transform: translateY(0); }
         }
         .skill-detail { animation: detailFade 0.3s ease-out; }
-        .work-detail  { animation: detailFade 0.35s ease-out; }
 
         .hero-grain {
           opacity: 0.06;
