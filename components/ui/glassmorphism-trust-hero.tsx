@@ -294,7 +294,7 @@ function Hero() {
                       <div className="text-sm font-medium text-white">Building things end-to-end</div>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono text-zinc-600">v26.05</span>
+                  <span className="text-[10px] font-mono   text-zinc-600">v26.05</span>
                 </div>
 
                 <div className="h-px w-full bg-white/[0.08]" />
@@ -307,7 +307,7 @@ function Hero() {
                   ].map(({ label, detail }) => (
                     <div key={label} className="flex items-center justify-between rounded-lg bg-white/[0.03] px-3.5 py-2.5 border border-white/[0.05]">
                       <span className="text-[11px] font-semibold uppercase tracking-widest text-zinc-400">{label}</span>
-                      <span className="text-[11px] text-zinc-600" style={{ fontFamily: "ui-monospace, 'Cascadia Code', monospace" }}>{detail}</span>
+                      <span className="text-[11px] text-zinc-300" style={{ fontFamily: "ui-monospace, 'Cascadia Code', monospace" }}>{detail}</span>
                     </div>
                   ))}
                 </div>
