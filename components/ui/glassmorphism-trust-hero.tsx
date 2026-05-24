@@ -9,6 +9,8 @@ import {
   Brain,
   Users,
   Send,
+  CheckCircle2,
+  CircleAlert,
   ChevronRight,
   Terminal,
   Layers,
@@ -1042,13 +1044,19 @@ function Contact() {
     "idle"
   );
 
+  useEffect(() => {
+    if (status !== "sent" && status !== "error") return;
+    const t = setTimeout(() => setStatus("idle"), 8000);
+    return () => clearTimeout(t);
+  }, [status]);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
     const form = e.currentTarget;
     const data = new FormData(form);
     try {
-      const res = await fetch("https://formspree.io/f/myzylqob", {
+      const res = await fetch("https://formspree.io/f/maqkdnrp", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
@@ -1084,7 +1092,49 @@ function Contact() {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-5">
 
           {/* Form — left 3 cols */}
-          <form onSubmit={handleSubmit} className="lg:col-span-3">
+          <form onSubmit={handleSubmit} className="lg:col-span-3 space-y-3">
+            {status === "sent" && (
+              <div
+                role="status"
+                className="flex items-start gap-3 rounded-xl border border-green-500/25 bg-green-500/10 px-4 py-3.5"
+              >
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-400" />
+                <div>
+                  <p className="text-sm font-medium text-green-100">
+                    Message sent!
+                  </p>
+                  <p className="mt-0.5 text-xs text-green-200/70">
+                    Thanks for reaching out — I&apos;ll get back to you within 24 hours.
+                  </p>
+                </div>
+              </div>
+            )}
+            {status === "error" && (
+              <div
+                role="alert"
+                className="flex items-start gap-3 rounded-xl border border-red-500/25 bg-red-500/10 px-4 py-3.5"
+              >
+                <CircleAlert className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
+                <div>
+                  <p className="text-sm font-medium text-red-100">
+                    Couldn&apos;t send your message
+                  </p>
+                  <p className="mt-0.5 text-xs text-red-200/70">
+                    Please try again in a moment, or email me directly via the links on the right.
+                  </p>
+                </div>
+              </div>
+            )}
+            {status === "sending" && (
+              <div
+                role="status"
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5"
+              >
+                <span className="h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-white/20 border-t-white" />
+                <p className="text-sm text-zinc-300">Sending your message…</p>
+              </div>
+            )}
+
             {/* Bordered form area */}
             <div className="border border-white/[0.08] rounded-2xl overflow-hidden divide-y divide-white/[0.08]">
 
@@ -1118,22 +1168,35 @@ function Contact() {
 
               {/* Action row */}
               <div className="flex items-center justify-between px-5 py-3.5 bg-white/[0.015]">
-                <span className="text-[10px] text-zinc-700 tabular-nums">
+                <span
+                  className={`text-[11px] tabular-nums ${
+                    status === "sent"
+                      ? "text-green-400/90"
+                      : status === "error"
+                      ? "text-red-400/90"
+                      : "text-zinc-500"
+                  }`}
+                >
                   {status === "sent"
-                    ? "✓ Sent successfully"
+                    ? "Message delivered"
                     : status === "error"
-                    ? "Something went wrong — try again"
+                    ? "Send failed — try again"
+                    : status === "sending"
+                    ? "Sending…"
                     : "Reply within 24 h"}
                 </span>
                 <button
                   type="submit"
-                  disabled={status === "sending" || status === "sent"}
+                  disabled={status === "sending"}
                   className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-xs font-semibold text-white transition-all hover:bg-white/10 hover:border-white/25 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   {status === "sending" ? (
                     "Sending…"
                   ) : status === "sent" ? (
-                    "Sent!"
+                    <>
+                      Send another
+                      <Send className="w-3 h-3" />
+                    </>
                   ) : (
                     <>
                       Send message
