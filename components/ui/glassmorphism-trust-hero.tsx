@@ -93,6 +93,13 @@ const HERO_TICKER: { name: string; logoSrc: string }[] = [
 
 const PROJECTS = [
   {
+    title: "SwiggyLens",
+    desc: "SwiggyLens is an AI agent that connects to your Swiggy account across all three verticals — food delivery, dineout, and Instamart — and tells you things about your food behavior that no single vertical ever could.",
+    tags: ["AI Agent", "Next.js", "MCP", "TypeScript"],
+    href: "https://github.com/atharva020/swiggy-lens",
+    icon: Sparkles,
+  },
+  {
     title: "RepoFAQ",
     desc: "Drop a GitHub URL, get FAQs with answers traced back to actual files in the repo. No sign-up, no fluff.",
     tags: ["AI", "Next.js", "TypeScript", "GitHub API"],
@@ -1010,6 +1017,7 @@ function GitGraph() {
         {/* Pinned repos strip */}
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
           {[
+            { name: "swiggy-lens",   lang: "TypeScript",  href: "https://github.com/atharva020/swiggy-lens"   },
             { name: "Call-Analysis",  lang: "Python",     href: "https://github.com/atharva020/Call-Analysis"  },
             { name: "CodeIt",         lang: "JavaScript",  href: "https://github.com/atharva020/CodeIt"         },
             { name: "E-com-Site",     lang: "JavaScript",  href: "https://github.com/atharva020/E-com-Site"     },
