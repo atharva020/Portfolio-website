@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import {
   ArrowRight,
-  Download,
+  ExternalLink,
   Code2,
   Cpu,
   GitBranch,
@@ -19,7 +19,6 @@ import {
   MoveUpRight,
   Briefcase,
   MapPin,
-  ExternalLink,
   Sparkles,
 } from "lucide-react";
 
@@ -93,6 +92,13 @@ const HERO_TICKER: { name: string; logoSrc: string }[] = [
 
 const PROJECTS = [
   {
+    title: "Emploire",
+    desc: "Emploire is a multi-organization workforce management platform for running leaves, work logs, milestones, and team calendars from one shared dashboard. Built for admins and employees who need a simple, centralized way to manage day-to-day team operations.",
+    tags: ["Next.js", "Workforce", "SaaS", "Dashboard"],
+    href: "https://emploire.com/",
+    icon: Briefcase,
+  },
+  {
     title: "SwiggyLens",
     desc: "SwiggyLens is an AI agent that connects to your Swiggy account across all three verticals — food delivery, dineout, and Instamart — and tells you things about your food behavior that no single vertical ever could.",
     tags: ["AI Agent", "Next.js", "MCP", "TypeScript"],
@@ -119,13 +125,6 @@ const PROJECTS = [
     tags: ["AI/ML", "NLP", "Python"],
     href: "https://conversation-analysis.onrender.com",
     icon: Cpu,
-  },
-  {
-    title: "Emploire",
-    desc: "Emploire is a multi-organization workforce management platform for running leaves, work logs, milestones, and team calendars from one shared dashboard. Built for admins and employees who need a simple, centralized way to manage day-to-day team operations.",
-    tags: ["Next.js", "Workforce", "SaaS", "Dashboard"],
-    href: "https://emploire.com/",
-    icon: Briefcase,
   },
 ];
 
@@ -226,19 +225,20 @@ function Hero() {
               style={{ animationFillMode: "both" }}
             >
               <a
-                href="/files/atharva_resume.pdf"
-                download
+                href="/atharva_chirde.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-zinc-950 transition-all hover:scale-[1.02] hover:bg-zinc-100 active:scale-[0.98]"
               >
-                <Download className="w-4 h-4" />
-                Download Resume
+                <ExternalLink className="w-4 h-4" />
+                View resume
               </a>
               <a
                 href="#work"
                 className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 hover:border-white/20"
               >
                 <Play className="w-4 h-4 fill-current" />
-                View portfolio
+                View projects
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
