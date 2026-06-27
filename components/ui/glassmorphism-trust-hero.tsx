@@ -121,11 +121,11 @@ const PROJECTS = [
     icon: Cpu,
   },
   {
-    title: "Zomato Clone",
-    desc: "Pixel-level Zomato UI clone — restaurant listings, menus, ordering flow. Built with React and styled-components.",
-    tags: ["React", "Styled-Components", "REST API"],
-    href: "https://zomato-ui-clone.onrender.com",
-    icon: Layers,
+    title: "Emploire",
+    desc: "Emploire is a multi-organization workforce management platform for running leaves, work logs, milestones, and team calendars from one shared dashboard. Built for admins and employees who need a simple, centralized way to manage day-to-day team operations.",
+    tags: ["Next.js", "Workforce", "SaaS", "Dashboard"],
+    href: "https://emploire.com/",
+    icon: Briefcase,
   },
 ];
 
@@ -942,6 +942,19 @@ function Work() {
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://github.com/atharva020"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-2.5 text-sm font-medium text-zinc-300 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
+          >
+            <GithubIcon className="w-4 h-4" />
+            View more on GitHub
+            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
         </div>
       </div>
     </section>
