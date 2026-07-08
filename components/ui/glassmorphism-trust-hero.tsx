@@ -19,6 +19,7 @@ import {
   MoveUpRight,
   Briefcase,
   MapPin,
+  Zap,
   Sparkles,
 } from "lucide-react";
 
@@ -106,11 +107,11 @@ const PROJECTS = [
     icon: Sparkles,
   },
   {
-    title: "RepoFAQ",
-    desc: "Drop a GitHub URL, get FAQs with answers traced back to actual files in the repo. No sign-up, no fluff.",
-    tags: ["AI", "Next.js", "TypeScript", "GitHub API"],
-    href: "https://repo-faq.atharvachirde.com/",
-    icon: Brain,
+    title: "VOLTA",
+    desc: "VOLTA is a fictional electric vehicle brand — a scroll-driven landing page built around a real-time 3D car. GSAP ScrollTrigger scrubs camera zoom, overlay transitions, and a drive-off ending; the configure section previews paint color on a second WebGL canvas with the same material pipeline. React Three Fiber + Three.js with cloned body/chrome/trim materials and wheel rotation, with mobile tuned so only one WebGL context runs at a time.",
+    tags: ["React Three Fiber", "GSAP", "Three.js", "WebGL"],
+    href: "https://voltas.atharvachirde.com",
+    icon: Zap,
   },
   {
     title: "CodeIt",
