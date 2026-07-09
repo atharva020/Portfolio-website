@@ -144,11 +144,11 @@ const EXPERIENCE = [
       "Build and maintain internal tools and interview-style applications end-to-end.",
       "Frontend across React, Next.js, Angular, and React Native.",
       "Backend and APIs with Node.js and Laravel.",
-      "Write and review coding assessment questions shipped to enterprise clients.",
+      "Write and review custom coding assessments for enterprise clients, built for use on HackerRank.",
       "Manage repos, scope features, and ship with a small product-focused team.",
     ],
     achievements: [
-      "Delivered assessments to Amazon, Capgemini, and Dell Technologies.",
+      "Built and delivered custom assessments for Amazon, Capgemini, and Dell Technologies on HackerRank.",
       "Shipped production web and mobile apps across React, Angular, and React Native.",
       "Designed feature-based coding challenges modeled after Airbnb, Swiggy, and Zomato.",
     ],
@@ -212,7 +212,7 @@ function Hero() {
               className="animate-fade-in delay-200 max-w-lg text-lg text-zinc-300 leading-relaxed"
               style={{ animationFillMode: "both" }}
             >
-              Full Stack Engineer at Shastack — delivering custom coding assessments and building real-world web and mobile apps for enterprise clients.
+              Full Stack Engineer at Shastack — I build custom coding assessments for enterprise clients on HackerRank, plus real-world web and mobile apps.
             </p>
             <p
               className="animate-fade-in delay-200 max-w-xl text-[15px] text-zinc-500 leading-relaxed border-l border-white/10 pl-4"
@@ -443,7 +443,7 @@ function Objective() {
                 <a href="https://www.shastack.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-300 transition-colors">
                   Shastack
                 </a>
-                : custom coding assessments and apps for clients including Amazon, Capgemini, and Dell Technologies.
+                : I build custom coding assessments for clients including Amazon, Capgemini, and Dell Technologies on HackerRank.
               </p>
             </div>
 
