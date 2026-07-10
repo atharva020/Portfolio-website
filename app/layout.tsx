@@ -43,11 +43,21 @@ export const metadata: Metadata = {
     siteName: "Atharva Chirde",
     title: siteTitle,
     description: siteDescription,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 687,
+        alt: "Atharva Chirde — Full Stack Engineer",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
+    images: ["/og.png"],
   },
 };
 

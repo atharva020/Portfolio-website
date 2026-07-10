@@ -966,14 +966,28 @@ function Work() {
 
 function GitGraph() {
   const [svgMarkup, setSvgMarkup] = useState<string | null>(null);
+  const [stats, setStats] = useState<{
+    totalAllTime: number | null;
+    thisYear: number | null;
+  }>({ totalAllTime: null, thisYear: null });
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        const chartRes = await fetch("/api/github-chart");
+        const [chartRes, statsRes] = await Promise.all([
+          fetch("/api/github-chart"),
+          fetch("/api/github-contributions"),
+        ]);
         if (!cancelled && chartRes.ok) {
           setSvgMarkup(await chartRes.text());
+        }
+        if (!cancelled && statsRes.ok) {
+          const data = (await statsRes.json()) as {
+            totalAllTime: number | null;
+            thisYear: number | null;
+          };
+          setStats(data);
         }
       } catch {
         /* ignore */
@@ -1014,6 +1028,30 @@ function GitGraph() {
               github.com/atharva020
               <MoveUpRight className="w-3 h-3 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
+          </div>
+        </div>
+
+        {/* Commit count cards */}
+        <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-2">
+          <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-5 py-4">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600">
+              This year
+            </div>
+            <div className="mt-1.5 text-2xl font-medium tracking-tight text-white tabular-nums">
+              {stats.thisYear != null ? stats.thisYear.toLocaleString() : "—"}
+            </div>
+            <div className="mt-0.5 text-[11px] text-zinc-600">contributions</div>
+          </div>
+          <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-5 py-4">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600">
+              All time
+            </div>
+            <div className="mt-1.5 text-2xl font-medium tracking-tight text-white tabular-nums">
+              {stats.totalAllTime != null
+                ? stats.totalAllTime.toLocaleString()
+                : "—"}
+            </div>
+            <div className="mt-0.5 text-[11px] text-zinc-600">contributions</div>
           </div>
         </div>
 
