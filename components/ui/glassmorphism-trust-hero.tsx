@@ -966,10 +966,8 @@ function Work() {
 
 function GitGraph() {
   const [svgMarkup, setSvgMarkup] = useState<string | null>(null);
-  const [stats, setStats] = useState<{
-    totalAllTime: number | null;
-    thisYear: number | null;
-  }>({ totalAllTime: null, thisYear: null });
+  const [thisYear, setThisYear] = useState<number | null>(null);
+  const [year, setYear] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -984,10 +982,11 @@ function GitGraph() {
         }
         if (!cancelled && statsRes.ok) {
           const data = (await statsRes.json()) as {
-            totalAllTime: number | null;
             thisYear: number | null;
+            year: string | null;
           };
-          setStats(data);
+          setThisYear(data.thisYear);
+          setYear(data.year);
         }
       } catch {
         /* ignore */
@@ -1031,30 +1030,6 @@ function GitGraph() {
           </div>
         </div>
 
-        {/* Commit count cards */}
-        <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-2">
-          <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-5 py-4">
-            <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600">
-              This year
-            </div>
-            <div className="mt-1.5 text-2xl font-medium tracking-tight text-white tabular-nums">
-              {stats.thisYear != null ? stats.thisYear.toLocaleString() : "—"}
-            </div>
-            <div className="mt-0.5 text-[11px] text-zinc-600">contributions</div>
-          </div>
-          <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-5 py-4">
-            <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600">
-              All time
-            </div>
-            <div className="mt-1.5 text-2xl font-medium tracking-tight text-white tabular-nums">
-              {stats.totalAllTime != null
-                ? stats.totalAllTime.toLocaleString()
-                : "—"}
-            </div>
-            <div className="mt-0.5 text-[11px] text-zinc-600">contributions</div>
-          </div>
-        </div>
-
         <div className="rounded-xl border border-white/[0.08] bg-zinc-950 overflow-hidden p-4 sm:p-6">
           {svgMarkup ? (
             <div
@@ -1063,6 +1038,11 @@ function GitGraph() {
             />
           ) : (
             <div className="h-[104px] w-full animate-pulse rounded bg-white/[0.04]" />
+          )}
+          {thisYear != null && year != null && (
+            <p className="mt-3 text-right text-[13px] leading-snug text-zinc-400">
+              {thisYear.toLocaleString()} contributions in {year}
+            </p>
           )}
         </div>
 
