@@ -18,7 +18,7 @@ const siteUrl =
 
 const siteTitle = "Atharva Chirde — Full Stack Engineer";
 const siteDescription =
-  "Full stack software engineer at Shastack. I build web and mobile apps (React, Next.js, Angular, React Native), write custom coding assessments for enterprise clients on HackerRank, and side projects like VOLTA and SwiggyLens. Remote · open to freelance.";
+  "Full stack software engineer at Shastack. I build web and mobile apps (React, Next.js, Angular, React Native), write custom coding assessments for enterprise clients through a leading technical assessment platform, and side projects like VOLTA and SwiggyLens. Remote · open to freelance.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

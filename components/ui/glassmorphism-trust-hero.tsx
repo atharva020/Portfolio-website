@@ -144,11 +144,11 @@ const EXPERIENCE = [
       "Build and maintain internal tools and interview-style applications end-to-end.",
       "Frontend across React, Next.js, Angular, and React Native.",
       "Backend and APIs with Node.js and Laravel.",
-      "Write and review custom coding assessments for enterprise clients, built for use on HackerRank.",
+      "Write and review custom coding assessments for enterprise clients on a leading technical assessment platform.",
       "Manage repos, scope features, and ship with a small product-focused team.",
     ],
     achievements: [
-      "Built and delivered custom assessments for Amazon, Capgemini, and Dell Technologies on HackerRank.",
+      "Built and delivered custom assessments for Amazon, Capgemini, and Dell Technologies through a leading technical assessment platform.",
       "Shipped production web and mobile apps across React, Angular, and React Native.",
       "Designed feature-based coding challenges modeled after Airbnb, Swiggy, and Zomato.",
     ],
@@ -212,7 +212,7 @@ function Hero() {
               className="animate-fade-in delay-200 max-w-lg text-lg text-zinc-300 leading-relaxed"
               style={{ animationFillMode: "both" }}
             >
-              Full Stack Engineer at Shastack — I build custom coding assessments for enterprise clients on HackerRank, plus real-world web and mobile apps.
+              Full Stack Engineer at Shastack — I build custom coding assessments for enterprise clients through a leading technical assessment platform, plus real-world web and mobile apps.
             </p>
             <p
               className="animate-fade-in delay-200 max-w-xl text-[15px] text-zinc-500 leading-relaxed border-l border-white/10 pl-4"
@@ -443,7 +443,7 @@ function Objective() {
                 <a href="https://www.shastack.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-300 transition-colors">
                   Shastack
                 </a>
-                : I build custom coding assessments for clients including Amazon, Capgemini, and Dell Technologies on HackerRank.
+                : I build custom coding assessments for clients including Amazon, Capgemini, and Dell Technologies through a leading technical assessment platform.
               </p>
             </div>
 
@@ -1049,10 +1049,10 @@ function GitGraph() {
         {/* Pinned repos strip */}
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
           {[
+            { name: "voltaEv",        lang: "JavaScript",  href: "https://github.com/atharva020/voltaEv"        },
             { name: "swiggy-lens",   lang: "TypeScript",  href: "https://github.com/atharva020/swiggy-lens"   },
             { name: "Call-Analysis",  lang: "Python",     href: "https://github.com/atharva020/Call-Analysis"  },
             { name: "CodeIt",         lang: "JavaScript",  href: "https://github.com/atharva020/CodeIt"         },
-            { name: "E-com-Site",     lang: "JavaScript",  href: "https://github.com/atharva020/E-com-Site"     },
             { name: "zomato_clone",   lang: "JavaScript",  href: "https://github.com/atharva020/zomato_clone"   },
             { name: "RAG-Pipeline",   lang: "TypeScript",  href: "https://github.com/atharva020/RAG-Pipeline"   },
           ].map(({ name, lang, href }) => (

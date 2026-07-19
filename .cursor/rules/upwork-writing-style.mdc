@@ -1,0 +1,14 @@
+---
+description: Upwork proposal and cover letter writing style preferences
+alwaysApply: true
+---
+
+# Upwork / proposal writing style
+
+When drafting Upwork proposals, cover letters, or client-facing copy for Atharva:
+
+- Never use em dashes (—). Use hyphen `-` or arrow `->` instead.
+- Prefer `->` for sequences and cause-effect (e.g. `read guide -> provision infra -> wire env vars`).
+- Keep tone direct and human. Avoid polished "AI brochure" phrasing.
+- No portfolio links in proposals unless asked; offer samples after NDA via Upwork messages.
+- No contact details (email, phone, external links) before contract per Upwork policy.
