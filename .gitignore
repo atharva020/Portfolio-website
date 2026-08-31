@@ -39,6 +39,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Personal / generated files
 _bmad
 _bmad-output
+.agents
 .claude
+.cursor
+atharva-chirde-profile.txt
+atharva_chirde_resume*.pdf
+atharva_chirde.pdf
+cover_letter_*.txt
+generate_resume*.py
+reposne.txt
+staffcoder_arch.md
+supabase_application_answers.txt
+docs/
+
+# Cloned / external projects
+Gas-service-CRM/
