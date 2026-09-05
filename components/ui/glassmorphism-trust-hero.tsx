@@ -158,13 +158,17 @@ const EXPERIENCE = [
       "Build and maintain internal tools and interview-style applications end-to-end.",
       "Frontend across React, Next.js, Angular, and React Native.",
       "Backend and APIs with Node.js and Laravel.",
-      "Write and review custom coding assessments for enterprise clients on a leading technical assessment platform.",
+      "Write and review custom coding assessments for enterprise clients, including assessments for HackerRank, on a leading technical assessment platform.",
+      "Curate assessments across React, Angular, Laravel, Node.js, TypeScript, Cypress, Playwright, React Native, and Swift.",
+      "Own end-to-end REST API integration and deployment workflows.",
       "Manage repos, scope features, and ship with a small product-focused team.",
     ],
     achievements: [
-      "Built and delivered custom assessments for Amazon, Capgemini, and Dell Technologies through a leading technical assessment platform.",
-      "Shipped production web and mobile apps across React, Angular, and React Native.",
-      "Designed feature-based coding challenges modeled after Airbnb, Swiggy, and Zomato.",
+      "Shipped Emploire end to end, a multi-organization workforce SaaS that replaced scattered spreadsheets with a single source of truth for HR teams across leave tracking, work logs, milestones, team calendars, role-based access control, and billing.",
+      "Contributed to Staffcoder, the company's flagship coding assessment platform, working on the assessment engine, execution infrastructure, and enhanced UI/UX.",
+      "Built AI-assisted development workflows with Cursor, Claude Code, and MCP agents that cut assessment creation time by 40%.",
+      "Improved SEO and page performance through ISR, metadata optimization, and Core Web Vitals fixes.",
+      "Focused on system design, backend architecture, and AWS infrastructure, with PostgreSQL for relational data modeling.",
     ],
     tags: ["React", "Next.js", "Angular", "React Native", "Node.js", "Laravel", "TypeScript", "MongoDB", "REST APIs", "Jest"],
     note: "Previously joined as an intern before transitioning to full-time.",
@@ -1298,7 +1302,7 @@ function Contact() {
               ))}
             </div>
 
-            <p className="text-xs text-zinc-700">
+            <p className="text-xs text-zinc-700" suppressHydrationWarning>
               © {new Date().getFullYear()} Atharva Chirde
             </p>
           </div>
