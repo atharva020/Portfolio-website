@@ -1,0 +1,202 @@
+%-------------------------
+% Resume in Latex
+% Author : Atharva Chirde
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Atharva Chirde} \\ \vspace{1pt}
+    \small +91 84850 82997 $|$ \href{mailto:atharva.chirde@gmail.com}{\underline{atharva.chirde@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/atharva-chirde}{\underline{linkedin.com/in/atharva-chirde}} $|$
+    \href{https://github.com/atharva020}{\underline{github.com/atharva020}} $|$
+    \href{https://atharvachirde.com}{\underline{atharvachirde.com}}
+\end{center}
+
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+  \resumeSubHeadingListStart
+    \resumeItem{Software Engineer with 2+ years of experience designing and building scalable, AI-driven products across multiple stacks. Strong in system design, API design, and database design, with a proven record of shipping production software for enterprise clients.}
+  \resumeSubHeadingListEnd
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {MGM -- Jawaharlal Nehru Engineering College}{Aurangabad, India}
+      {Bachelor of Engineering in Computer Engineering, CGPA 8.0/10}{2021 -- 2025}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Full Stack Software Engineer}{Jun 2025 -- Present}
+      {Shastack}{Remote}
+      \resumeItemListStart
+        \resumeItem{Shipped Emploire end to end, a multi-organization workforce SaaS that replaced scattered spreadsheets with a single source of truth for HR teams, covering leave tracking, work logs, milestones, team calendars, role-based access control, and billing.}
+        \resumeItem{Built AI-assisted development workflows with Cursor, Claude Code, and MCP agents, which cut the time to create coding assessments by 40\%.}
+        \resumeItem{Worked on Staffcoder, the company's flagship coding assessment platform, contributing to the assessment engine, execution infrastructure, and analytics systems used by enterprise hiring teams.}
+        \resumeItem{Improved SEO and page performance for Shastack applications through ISR, metadata optimization, and Core Web Vitals fixes, increasing organic traffic and discoverability of assessment content.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{Jan 2025 -- Jun 2025}
+      {Shastack}{Remote}
+      \resumeItemListStart
+        \resumeItem{Built and reviewed custom coding assessments for hiring platforms, covering frontend, backend, and full-stack problem statements used by enterprise clients including Amazon, Capgemini, and Dell Technologies.}
+        \resumeItem{Designed feature-based coding challenges modeled after real-world products and owned end-to-end REST API integration and deployment workflows across the full software development lifecycle.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Staffcoder} $|$ \emph{Next.js, TypeScript, FastAPI, PostgreSQL, AWS, Kubernetes}}{2025 -- Present}
+          \resumeItemListStart
+            \resumeItem{Remote hands-on coding assessment platform for enterprise hiring teams; Next.js 16 frontend, FastAPI on AWS Lambda, Kubernetes pods per session, S3 storage, Razorpay billing.}
+            \resumeItem{Improved assessment creation speed, built analytics dashboards, and enhanced UI consistency.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Emploire} $|$ \emph{Next.js, TypeScript, Supabase, Tailwind CSS}}{2025}
+          \resumeItemListStart
+            \resumeItem{Built end to end as a multi-organization HR SaaS: leave tracking, work logs, milestones, team calendars, multi-org support, RBAC, billing, and real-time workflows.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Swiggy Lens} $|$ \emph{Next.js, TypeScript, MCP, AI Agent}}{2025}
+          \resumeItemListStart
+            \resumeItem{Built an AI agent connecting to Swiggy via MCP tools to surface cross-vertical spend and ordering insights across Food, Dineout, and Instamart.}
+            \resumeItem{Implemented food-mode detection, proactive insight cards, spend dashboards, and natural-language chat over live order data.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{DevTape} $|$ \emph{TypeScript, React, npm}}{2025}
+          \resumeItemListStart
+            \resumeItem{Published an npm debugging toolkit that records a causal error timeline for frontend failures.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: JavaScript (ES6+), TypeScript, Python, SQL, Swift (familiar)} \\
+     \textbf{Frontend}{: React.js, Next.js, Tailwind CSS, Shadcn UI, Radix UI, React Native, Angular} \\
+     \textbf{Backend}{: Node.js, Express.js, FastAPI, Django, Laravel, REST APIs, WebSockets, Webhooks} \\
+     \textbf{Databases}{: PostgreSQL, MongoDB, SQLite, Supabase, Redis} \\
+     \textbf{Cloud / DevOps}{: AWS (Lambda, S3, EKS, SQS, SES, CloudFront), Docker, Kubernetes, GitHub Actions, Vercel} \\
+     \textbf{AI / Tools}{: Cursor, Claude Code, MCP, Ollama, OpenAI SDK, Langchain, LLM pipelines, Git, Postman, Jest, Playwright}
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}

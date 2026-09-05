@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://atharvachirde.com";
 
-const siteTitle = "Atharva Chirde — Full Stack Engineer";
+const siteTitle = "Atharva Chirde — Software Engineer";
 const siteDescription =
-  "Full stack software engineer at Shastack. I build web and mobile apps (React, Next.js, Angular, React Native), write custom coding assessments for enterprise clients through a leading technical assessment platform, and publish open-source tools like DevTape on npm (atharva020). Remote · open to freelance.";
+  "Software engineer at Shastack. I build custom coding assessments for enterprise clients through a leading technical assessment platform, plus real-world web and mobile apps. Remote · open to freelance.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

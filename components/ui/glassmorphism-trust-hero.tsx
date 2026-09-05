@@ -146,7 +146,7 @@ const PROJECTS = [
 const EXPERIENCE = [
   {
     company: "Shastack / CodingChai",
-    role: "Full Stack Software Engineer",
+    role: "Software Engineer",
     type: "Full-time",
     period: "2025 — Present",
     location: "Remote",
@@ -219,14 +219,14 @@ function Hero() {
                 Atharva Chirde
               </span>
               <br />
-              <span className="text-white">Full Stack Developer</span>
+              <span className="text-white">Software Engineer</span>
             </h1>
 
             <p
               className="animate-fade-in delay-200 max-w-lg text-lg text-zinc-300 leading-relaxed"
               style={{ animationFillMode: "both" }}
             >
-              Full Stack Engineer at Shastack — I build custom coding assessments for enterprise clients through a leading technical assessment platform, plus real-world web and mobile apps.
+              Software Engineer at Shastack — I build custom coding assessments for enterprise clients through a leading technical assessment platform, plus real-world web and mobile apps.
             </p>
             <p
               className="animate-fade-in delay-200 max-w-xl text-[15px] text-zinc-500 leading-relaxed border-l border-white/10 pl-4"
@@ -330,7 +330,7 @@ function Hero() {
 
                 <div className="space-y-2">
                   {[
-                    { label: "Full Stack", detail: "React · Next.js · Node.js · Laravel" },
+                    { label: "Software", detail: "React · Next.js · Node.js · Laravel" },
                     { label: "Mobile",     detail: "React Native · iOS (Swift)"           },
                     { label: "AI & Tools", detail: "Cursor · Claude Code · MCP · Ollama" },
                   ].map(({ label, detail }) => (
@@ -408,7 +408,7 @@ const EXPERTISE_TAGS = [
 ];
 
 const SPEC_ROWS = [
-  { key: "role",      val: "Full Stack Software Engineer"          },
+  { key: "role",      val: "Software Engineer"          },
   { key: "company",   val: "Shastack / CodingChai"                 },
   { key: "building",  val: "assessment platforms & real-world apps"},
   { key: "learning",  val: "distributed systems, LLM fine-tuning"  },
@@ -448,7 +448,7 @@ function Objective() {
 
             <div className="space-y-3 text-[15px] leading-relaxed text-zinc-400 max-w-lg">
               <p>
-                Started with curiosity, stayed for the craft. Full-stack engineer: clean APIs, crisp UIs, MERN production apps, and AI in the product—Langchain, LLMs, pipelines—plus tools people actually use day-to-day.
+                Started with curiosity, stayed for the craft. Software engineer: clean APIs, crisp UIs, MERN production apps, and AI in the product—Langchain, LLMs, pipelines—plus tools people actually use day-to-day.
               </p>
               <p>
                 In practice:{" "}
