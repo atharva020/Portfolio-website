@@ -189,6 +189,36 @@ const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
   </p>
 );
 
+// ── Keyword highlighting for experience bullets ──
+const HIGHLIGHT_TERMS = [
+  "Emploire", "Staffcoder", "HackerRank",
+  "system design", "backend architecture", "AWS", "PostgreSQL",
+  "40%", "RBAC", "role-based access control",
+];
+
+const highlightTermSet = new Set(HIGHLIGHT_TERMS.map((t) => t.toLowerCase()));
+
+function Highlight({ text }: { text: string }) {
+  const escaped = HIGHLIGHT_TERMS.slice()
+    .sort((a, b) => b.length - a.length)
+    .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const regex = new RegExp(`(${escaped.join("|")})`, "gi");
+  const parts = text.split(regex);
+  return (
+    <span>
+      {parts.map((part, i) =>
+        highlightTermSet.has(part.toLowerCase()) ? (
+          <span key={i} className="font-medium text-amber-300/70">
+            {part}
+          </span>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </span>
+  );
+}
+
 // ── HERO ──────────────────────────────────────────────────────────────────────
 
 function Hero() {
@@ -712,7 +742,7 @@ function Experience() {
                   {exp.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-zinc-400">
                       <ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500/60" />
-                      {h}
+                      <Highlight text={h} />
                     </li>
                   ))}
                 </ul>
@@ -727,7 +757,7 @@ function Experience() {
                   {exp.achievements.map((a) => (
                     <li key={a} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-zinc-400">
                       <Star className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-400/70 fill-amber-400/40" />
-                      {a}
+                      <Highlight text={a} />
                     </li>
                   ))}
                 </ul>
@@ -742,18 +772,6 @@ function Experience() {
                   </p>
                 )}
               </div>
-            </div>
-
-            {/* Tech tags */}
-            <div className="mt-8 pt-6 border-t border-white/[0.05] flex flex-wrap gap-2">
-              {exp.tags.map((t) => (
-                <span
-                  key={t}
-                  className="inline-flex items-center rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-zinc-300"
-                >
-                  {t}
-                </span>
-              ))}
             </div>
 
           </div>
