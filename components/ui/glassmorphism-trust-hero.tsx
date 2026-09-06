@@ -62,8 +62,8 @@ const SKILLS = [
   {
     icon: Layers,
     title: "Frameworks, web & AI in products",
-    desc: "React, Next.js, Node.js, Express, and MongoDB—the stack you deploy and maintain. MERN, auth, REST, SSR on top. TensorFlow and NLP where models matter; Langchain and LLMs wired into real APIs users hit, not notebook demos.",
-    tags: ["React", "Next.js", "Node.js", "MongoDB", "Langchain", "LLMs", "TensorFlow", "MERN"],
+    desc: "React, Next.js, Node.js, Express, and MongoDB—the stack you deploy and maintain. MERN, auth, REST, SSR on top. Langchain and LLMs wired into real APIs users hit, not notebook demos.",
+    tags: ["React", "Next.js", "Node.js", "MongoDB", "Langchain", "LLMs", "MERN"],
   },
   {
     icon: GitBranch,
@@ -575,7 +575,7 @@ function Objective() {
 const COMMITS = [
   { hash: "e1c7b3a", type: "feat",     msg: "join Shastack full-time — deliver custom assessments for Amazon, Capgemini, Dell" },
   { hash: "b2d83f5", type: "feat",     msg: "ship personal projects — RepoFAQ, CodeIt, Conversation Analysis, Zomato Clone" },
-  { hash: "c82d77e", type: "refactor", msg: "migrate stack → MERN + Next.js, add TensorFlow pipelines" },
+  { hash: "c82d77e", type: "refactor", msg: "migrate stack → MERN + Next.js, add LLM pipelines" },
   { hash: "d4f1e09", type: "feat",     msg: "freelance — web & mobile projects for independent clients" },
   { hash: "0e6a912", type: "init",     msg: "init: B.E. Computer Engineering @ MGM University" },
 ];
