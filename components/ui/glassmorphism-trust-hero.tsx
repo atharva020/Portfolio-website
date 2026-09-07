@@ -100,6 +100,13 @@ const HERO_TICKER: { name: string; logoSrc: string }[] = [
 
 const PROJECTS = [
   {
+    title: "Staffcoder",
+    desc: "Staffcoder is a hands-on coding platform for practicing real engineering work. Candidates get a full remote IDE, the backend spins up an isolated environment per session, tests run and results are collected, with learning paths, session budgets, billing, and an admin console around it.",
+    tags: ["Coding Platform", "SaaS", "Kubernetes", "AWS"],
+    href: "https://www.staffcoder.com",
+    icon: Code2,
+  },
+  {
     title: "Emploire",
     desc: "Emploire is a multi-organization workforce management platform for running leaves, work logs, milestones, and team calendars from one shared dashboard. Built for admins and employees who need a simple, centralized way to manage day-to-day team operations.",
     tags: ["Next.js", "Workforce", "SaaS", "Dashboard"],
@@ -126,13 +133,6 @@ const PROJECTS = [
     tags: ["React Three Fiber", "GSAP", "Three.js", "WebGL"],
     href: "https://voltas.atharvachirde.com",
     icon: Zap,
-  },
-  {
-    title: "CodeIt",
-    desc: "Browser-based code editor that compiles multiple languages and syncs edits in real time via WebSockets.",
-    tags: ["React", "Node.js", "WebSockets"],
-    href: "https://github.com/atharva020/CodeIt",
-    icon: Terminal,
   },
   {
     title: "Conversation Analysis",
@@ -576,7 +576,6 @@ const COMMITS = [
   { hash: "e1c7b3a", type: "feat",     msg: "join Shastack full-time — deliver custom assessments for Amazon, Capgemini, Dell" },
   { hash: "b2d83f5", type: "feat",     msg: "ship personal projects — RepoFAQ, CodeIt, Conversation Analysis, Zomato Clone" },
   { hash: "c82d77e", type: "refactor", msg: "migrate stack → MERN + Next.js, add LLM pipelines" },
-  { hash: "d4f1e09", type: "feat",     msg: "freelance — web & mobile projects for independent clients" },
   { hash: "0e6a912", type: "init",     msg: "init: B.E. Computer Engineering @ MGM University" },
 ];
 
