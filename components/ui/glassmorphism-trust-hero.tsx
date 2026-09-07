@@ -102,7 +102,7 @@ const PROJECTS = [
   {
     title: "Staffcoder",
     desc: "Staffcoder is a hands-on coding platform for practicing real engineering work. Candidates get a full remote IDE, the backend spins up an isolated environment per session, tests run and results are collected, with learning paths, session budgets, billing, and an admin console around it.",
-    tags: ["Coding Platform", "SaaS", "Kubernetes", "AWS"],
+    tags: ["Coding Platform", "Kubernetes", "AWS"],
     href: "https://www.staffcoder.com",
     icon: Code2,
   },
